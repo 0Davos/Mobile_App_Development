@@ -56,16 +56,36 @@ for i in 1...height {
         }
     }
     
-    // All other rows less than half the height
-    else if height / 2 > i {
-        
+    // All other rows (other than center)
+    else if height / 2 != i {
+        var x_spot1: Int = i
+        var x_spot2: Int = height - i + 1
+        for j in 1...height {
+            if j == x_spot1 || j == x_spot2 {
+                print("+", terminator:"")
+            }
+            else if j == 1 || j == height {
+                print("|", terminator:"")
+            }
+            else {
+                print(" ", terminator:"")
+            }
+        }
+            
     }
     // Check for middle row
     else if height / 2 == i {
-        
-    }
-    else {
-        
+        for j in 1...height {
+            if j == i {
+                print("+", terminator:"")
+            }
+            else if j == 1 || j == height {
+                print("|", terminator:"")
+            }
+            else {
+                print(" ", terminator:"")
+            }
+        }
     }
     
     
