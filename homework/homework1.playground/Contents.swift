@@ -91,3 +91,28 @@ for i in 1...height {
     
     print("")
 }
+
+
+
+print("-------------------------")
+// 3 - Prime check
+var limit: Int = 100
+for i in 2...limit {
+    var isPrime: true
+    
+    for j in 1...i.squareRoot() {
+        if i / j = 1 {
+            isPrime = false
+        }
+    }
+    if isPrime {
+        print("\(i) ", terminator:"")
+    }
+}
+
+print("Done.")
+
+
+
+
+
