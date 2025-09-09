@@ -45,7 +45,6 @@ for i in 1...height {
     
     // Top and bottom
     if i == 1 || i == height {
-        print("")
         for j in 1...height {
             if j == 1 || j == height {
                 print("+", terminator:"")
@@ -57,7 +56,7 @@ for i in 1...height {
     }
     
     // All other rows (other than center)
-    else if height / 2 != i {
+    else if height % 2 == 0 || (height % 2 == 1 && height != i){
         var x_spot1: Int = i
         var x_spot2: Int = height - i + 1
         for j in 1...height {
@@ -74,7 +73,7 @@ for i in 1...height {
             
     }
     // Check for middle row
-    else if height / 2 == i {
+    else if height % 2 == 1 && height == i {
         for j in 1...height {
             if j == i {
                 print("+", terminator:"")
@@ -90,5 +89,5 @@ for i in 1...height {
     
     
     
-    
+    print("")
 }
