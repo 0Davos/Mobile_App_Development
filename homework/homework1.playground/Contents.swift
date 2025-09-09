@@ -56,6 +56,18 @@ for i in 1...height {
         }
     }
     
+    // All other rows less than half the height
+    else if height / 2 > i {
+        
+    }
+    // Check for middle row
+    else if height / 2 == i {
+        
+    }
+    else {
+        
+    }
+    
     
     
     
