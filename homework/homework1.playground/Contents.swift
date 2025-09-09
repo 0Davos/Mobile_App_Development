@@ -72,7 +72,7 @@ for i in 1...height {
         }
             
     }
-    // Check for middle row
+    // Check for middle row ONLY if height is odd
     else if height % 2 == 1 && height == i {
         for j in 1...height {
             if j == i {
@@ -98,11 +98,16 @@ print("-------------------------")
 // 3 - Prime check
 var limit: Int = 100
 for i in 2...limit {
-    var isPrime: true
+    var isPrime: Bool = true
     
-    for j in 1...i.squareRoot() {
-        if i / j = 1 {
-            isPrime = false
+    // We know 2 and 3 are prime
+    if i > 3 {
+        // Check from 2 to sqrt of i, which is rounded to the nearest int
+        for j in 2...Int(Double(i).squareRoot()) {
+            if i % j == 0 {
+                isPrime = false
+                break
+            }
         }
     }
     if isPrime {
@@ -110,7 +115,7 @@ for i in 2...limit {
     }
 }
 
-print("Done.")
+print("\nDone.")
 
 
 
