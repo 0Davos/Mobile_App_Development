@@ -3,11 +3,7 @@
  Mobile App Development
  Homework 2
  */
-
 import UIKit
-
-
-
 
 // Categorizing Integers I
 // This will take two parameters: a set of integers, and a second set of “trial” integers. It will then classify the integers in the second set by whether or not each is even multiple of all of the integers in the first set and return a named tuple containing two sets
@@ -18,6 +14,7 @@ func isMultiple(of testValues: Set<Int>, in numbers: Set<Int>) -> (yes: Set<Int>
     
     for num in numbers {
         var isMultipleOfAll = true
+        // Add check for divisor being 0
         for divisor in testArr {
             if divisor == 0 {
                 if num == 0 {
@@ -28,6 +25,7 @@ func isMultiple(of testValues: Set<Int>, in numbers: Set<Int>) -> (yes: Set<Int>
                     break
                 }
             }
+            // If a num doesn't mod by divisor cleanly, the num isn't a multiple
             else if num % divisor != 0 {
                 isMultipleOfAll = false
                 break
@@ -42,7 +40,6 @@ func isMultiple(of testValues: Set<Int>, in numbers: Set<Int>) -> (yes: Set<Int>
         }
     }
     return (yes: yesSet, no: noSet)
-    //return (yes: Set([-42, 105, 0]), no: Set([-12, -7, 2, 3, 7, 19]))
     
 }
 
@@ -50,6 +47,7 @@ print("Testing - Categorizing Integers I")
 print(isMultiple(of: Set([3, 7]), in: Set([-12, -7, -42, 0, 2, 3, 7, 105, 19])))
 print(isMultiple(of: Set([0, 5]), in: Set([0, 1, 3, 5, -5])))
 print("-----------------------------------")
+
 
 // Categorizing Integers II
 //This will apply the supplied function (or closure) to each value in the input set. Values for which the function (or closure) returns true will go into the yes set; and values for which the function or closure returns false will go into the no set.
@@ -75,21 +73,19 @@ print("-----------------------------------")
 
 // Categorizing Strings
 //This function will take a set of words and sort them into two sets. Words that are a palindrome (without regard to case) will go into the first set; words that are not a palindrome will go into the second set. Ignore case when checking.
-
 func checkForPalindromes(_ wordSet: Set<String>) -> (yes: Set<String>, no: Set<String>) {
     var yesSet: Set<String> = []
     var noSet: Set<String> = []
     for word in wordSet {
-        var word = word.lowercased()
-        var reversedWord = String(word.reversed())
-        if reversedWord == word {
+        var lowerWord = word.lowercased()
+        var reversedWord = String(lowerWord.reversed())
+        if reversedWord == lowerWord {
             yesSet.insert(word)
         }
         else {
             noSet.insert(word)
         }
     }
-    
     return (yes: yesSet, no: noSet)
 }
 
@@ -99,7 +95,6 @@ print(checkForPalindromes(Set(["morning", "maam", "Bananab", "tomato", "Aoxomoxo
 print("-----------------------------------")
 
 
-
 // Performing a Sequence of Checks
 // This will take an array of functions (or closures) and apply each in sequence to the value passed to the function and put the result, a boolean, in an array that is returned.
 func doChecks<T>(_ val: T, checks: [(T) -> Bool]) -> [Bool] {
@@ -107,9 +102,7 @@ func doChecks<T>(_ val: T, checks: [(T) -> Bool]) -> [Bool] {
     for function in checks {
         var x: Bool = function(val)
         returnArray.insert(x, at:returnArray.endIndex)
-        
     }
-    
     return returnArray
 }
 
@@ -124,10 +117,7 @@ func isPrime(num:Int) -> Bool{
     var sqrtNumDub: Double = Double(num).squareRoot()
     var sqrtNumInt: Int = Int(sqrtNumDub)
     
-    
     for i in 2...Int(sqrtNumInt) {
-        //var isPrime: Bool = true
-        
         if i > 3 {
             if num % i == 0 {
                 return false
@@ -140,3 +130,4 @@ func isPrime(num:Int) -> Bool{
 
 print("Testing - Performing a Sequence of Checks")
 print(doChecks(97, checks: [isEven, isPrime]))
+print("-----------------------------------")
