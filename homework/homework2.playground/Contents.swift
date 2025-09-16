@@ -103,14 +103,14 @@ print("-----------------------------------")
 // Performing a Sequence of Checks
 // This will take an array of functions (or closures) and apply each in sequence to the value passed to the function and put the result, a boolean, in an array that is returned.
 func doChecks<T>(_ val: T, checks: [(T) -> Bool]) -> [Bool] {
-    var returnArray: Set<Bool> = []
-    for function in T.Type {
-        if function(val) {
-            
-        }
+    var returnArray: [Bool] = []
+    for function in checks {
+        var x: Bool = function(val)
+        returnArray.insert(x, at:returnArray.endIndex)
+        
     }
     
-    return [true]
+    return returnArray
 }
 
 func isEven(num:Int) -> Bool {
@@ -136,3 +136,7 @@ func isPrime(num:Int) -> Bool{
     }
     return true
 }
+
+
+print("Testing - Performing a Sequence of Checks")
+print(doChecks(97, checks: [isEven, isPrime]))
