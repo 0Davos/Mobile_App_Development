@@ -1,31 +1,31 @@
 //
 //  SecondView.swift
-//  iOS Assignment 2
+//  SimpleTwoScreenApp_Observation
 //
-//  Created by user285571 on 10/8/25.
-//
-
-
-//
-//  SecondView.swift
-//  SimpleTwoScreenApp
-//
-//  Created by Jason Hibbeler on 7/22/25.
+//  Created by Jason Hibbeler on 10/11/25.
 //
 
 import SwiftUI
 
 struct SecondView: View {
-  @EnvironmentObject var data: Data
+  @Environment(DataModel.self) private var data: DataModel
   
   var body: some View {
-      Spacer()
-      TextField("Answer?", text: $static_str)
-          .font(.system(size:40))
-      Spacer()
+    @Bindable var data = data
+      
+    ZStack() {
+      VStack() {
+        Spacer()
+          TextField("Enter text here", text: $data.text)
+              .font(.system(size:50))
+              .padding(100)
+              //.padding(.horizontal)
+          Spacer()
+      }
+    }
   }
 }
 
 #Preview {
-  SecondView().environmentObject(Data(count: 0))
+    SecondView().environment(DataModel(text: "ABCDEF"))
 }

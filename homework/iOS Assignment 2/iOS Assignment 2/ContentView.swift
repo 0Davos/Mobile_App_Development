@@ -22,11 +22,12 @@ struct HomeView: View {
       } else {
         FirstView()
       }
-      Spacer()
+      //Spacer()
       HStack() {
           
-        if showSecondView {
-          Text("Back").font(.system(size:30))        }
+          if showSecondView {
+              Text("Back").font(.system(size:30))
+          }
           else {Text("Settings").font(.system(size:30))
         }
           
@@ -45,5 +46,5 @@ struct HomeView: View {
 }
 
 #Preview {
-  HomeView().environmentObject(Data(count: 0))
+    HomeView().environment(DataModel(text: "ABCDEF"))
 }
