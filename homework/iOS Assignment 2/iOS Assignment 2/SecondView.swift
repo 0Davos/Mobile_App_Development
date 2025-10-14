@@ -17,9 +17,9 @@ struct SecondView: View {
       VStack() {
         Spacer()
           TextField("Enter text here", text: $data.text)
+              .textFieldStyle(.roundedBorder)
               .font(.system(size:50))
-              .padding(100)
-              //.padding(.horizontal)
+              .padding(.horizontal)
           Spacer()
       }
     }
